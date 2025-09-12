@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "grocery-shelf-analysis"
+version = "0.1.0"
+description = "CV + LLM shelf fullness API"
+authors = ["Paul Cahuana <pcahuana.27@gmail.com>"]
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+# Recommend 3.11/3.12 for best CV wheels. If you must use 3.13, keep headless OpenCV in mind.
+python = "^3.11"
+fastapi = "^0.116.1"
+uvicorn = {version="^0.35.0", extras=["standard"]}
+python-multipart = "^0.0.20"
+pyjwt = "^2.10.1"
+pydantic = "^2.11.7"
+httpx = "^0.28.1"
+pillow = "^11.3.0"
+opencv-python = "4.12.0.88"
+numpy = ">=2,<2.3.0"
+python-dotenv = "^1.1.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+ruff = "^0.6.9"
+pytest = "^8.3.3"
+pytest-asyncio = "^0.24.0"
+
+[tool.poetry.scripts]
+dev = "uvicorn app.main:app --reload --port 8080"
